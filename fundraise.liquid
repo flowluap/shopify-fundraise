@@ -1,0 +1,106 @@
+<style>
+  #goal-heading{
+  	margin: {{section.settings.margin}}px;
+  
+  }
+  
+  #myProgress {
+    width: 100%;
+    background-color: {{section.settings.bg}};
+    margin: {{section.settings.margin}}px;
+
+  }
+
+    #myBar {
+      width: {{section.settings.fund | times: 1.0 | divided_by: section.settings.goal | times: 100.0 }}%;
+      height: 30px;
+      background-color: {{section.settings.fg}};
+      text-align: center;
+      line-height: {{section.settings.height}}px;
+      color: white;
+    }
+</style>
+
+
+<div id="myProgress">
+  
+  <div id="myBar">{{section.settings.fund }}€</div>
+</div>
+{% if section.settings.show-heading == "true" %}
+  <h4 id="goal-heading">{{section.settings.fund }}€ von {{section.settings.goal}}€</h4>
+{% endif %}
+
+
+{% schema %}
+{
+  "name": "Spendenbalken",
+  "settings": [
+    {
+      "id": "goal",
+      "type": "text",
+      "label": "Zielbetrag",
+      "default": "20000"
+    },
+{
+      "id": "fund",
+      "type": "text",
+      "label": "Aktueller Stand",
+      "default": "2000"
+    },
+{
+   "type": "radio",
+   "id": "show-heading",
+   "options": [
+      { "value": "true", "label": "Ja"},
+      { "value": "false", "label": "Nein"}
+
+   ],
+   "label": "Zeige Überschrift"
+},
+    {
+        "type": "color",
+        "id": "fg",
+        "label": "Foreground color",
+        "default": "#09B61B"
+      },
+	{
+        "type": "color",
+        "id": "bg",
+        "label": "Background Color",
+        "default": "#e5e5e5"
+      },
+      {
+          "type":      "range",
+          "id":        "margin",
+          "min":       0,
+          "max":        100,
+          "step":       1,
+          "unit":       "px",
+          "label":     "Margin",
+          "default":   10
+      },
+{
+          "type":      "range",
+          "id":        "height",
+          "min":       0,
+          "max":        100,
+          "step":       1,
+          "unit":       "px",
+          "label":     "Höhe",
+          "default":   30
+      }
+  ],
+  "presets": [
+    {
+      "name": "Spendenbalken",
+      "category": "Spende"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
