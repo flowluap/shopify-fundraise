@@ -1,6 +1,8 @@
 # shopify-fundraise
 
-# Installation
+# Installation:
+- go in your Theme code in Shopify and paste under `fundraise.liquid` insinde "Sections".
+- you will now be able to use the fundraise Section in this theme
 
 # Images:
 
